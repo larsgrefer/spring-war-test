@@ -1,0 +1,30 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven { url 'https://repo.spring.io/snapshot' }
+        maven { url 'https://repo.spring.io/milestone' }
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+    dependencies {
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:2.1.0.M4'
+        classpath "io.freefair.gradle:lombok-plugin:2.7.3"
+    }
+}
+
+apply plugin: "war"
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: "io.freefair.lombok"
+
+repositories {
+    jcenter()
+    maven { url "https://repo.spring.io/snapshot" }
+    maven { url "https://repo.spring.io/milestone" }
+}
+
+dependencies {
+    compile "org.springframework.boot:spring-boot-starter-web"
+    providedCompile "org.springframework.boot:spring-boot-starter-tomcat"
+}
+
+war.enabled = true
